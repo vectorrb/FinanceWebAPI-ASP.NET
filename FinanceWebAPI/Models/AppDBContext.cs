@@ -21,6 +21,10 @@ namespace FinanceWebAPI.Models
         public DbSet<User> Users { get; set; }
         public DbSet<LoginDetail> LoginDetails { get; set; }
         public DbSet<Card> Cards { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+
+        public DbSet<UserLoginViewModel> UsersLogin { get; set; }
 
         //this is dummy table or view for executing stored procedure
         public DbSet<Product> Products { get; set; }
