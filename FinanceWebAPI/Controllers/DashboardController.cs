@@ -15,14 +15,15 @@ namespace FinanceWebAPI.Controllers
             _context = context;//public property, will be responsible to do crud operations
         }
 
-        [Route("/{id}")]
+        [Route("")]
+        [HttpGet]
         public ActionResult Get(int id)
         {
             Card cardDetail = _context.Cards.FirstOrDefault(e => e.userId == id);
             return Ok(cardDetail);
         }
 
-        [Route("productsPurchasedByUser/{id}")]
+        [Route("productsPurchasedByUser")]
         public IActionResult productsPurchasedByUser(int id)
         {
             List<Order> OrderList = _context.Orders.Where(order => order.userId == id).ToList();
@@ -62,16 +63,17 @@ namespace FinanceWebAPI.Controllers
 
         }
 
-        [Route("getAmountForProduct/{userId}")]
+        [Route("getAmountPaidForProduct/")]
         public IActionResult GetAmountPaid(int userId, int productId)
         {
             decimal amountPaid = _context.Transactions
                 .Where(t => t.userId == userId && t.productId == productId)
                 .Sum(t => t.transactionAmount);
+
             return Ok(amountPaid);
         }
 
-        [Route("getRecentTransactions/{id}")]
+        [Route("getRecentTransactions/")]
         public IActionResult GetRecentTransactions(int id)
         {
             var recentOrderDate = _context.Orders

@@ -17,15 +17,15 @@ namespace FinanceWebAPI.Controllers
             _context = context;
         }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<User>> Get()
-        {
-            var UserList = _context.Users.ToList();
-            return Ok(UserList);
-        }
+        //[HttpGet]
+        //public ActionResult<IEnumerable<User>> Get()
+        //{
+        //    var UserList = _context.Users.ToList();
+        //    return Ok(UserList);
+        //}
 
         [HttpGet("{id}")]
-        public ActionResult<IEnumerable<User>> Get(int id) {
+        public ActionResult Get(int id) {
             var user = _context.Users.FirstOrDefault(c => c.userId == id);
             return Ok(user);
         }
