@@ -16,13 +16,3 @@ namespace FinanceWebAPI.Models
         public string productImageAddress { get; set; }
     }
 }
-/*
-CREATE TABLE Products(
-productId int primary key identity(1,1),
-productName varchar(30),
-productDescription varchar(400),
-productPrice decimal,
-productImageAddress varchar(100),
-productImage varbinary(max) --doubt
-);
-*/

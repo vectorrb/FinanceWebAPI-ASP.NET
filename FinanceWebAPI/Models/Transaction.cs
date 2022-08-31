@@ -17,12 +17,3 @@ namespace FinanceWebAPI.Models
         public decimal transactionAmount { get; set; }
     }
 }
-/*CREATE TABLE Transactions(
-transactionId int primary key identity(1,1),
-userId int,
-orderId int,
-productId int,
-transactionDate DateTime,
-transactionAmount decimal,
-);
-*/

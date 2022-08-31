@@ -16,12 +16,3 @@ namespace FinanceWebAPI.Models
         public string confirmPassword { get; set; }
     }
 }
-/*
- CREATE TABLE LoginDetails(
-loginId int primary key identity(1,1),
-userId int NOT NULL,
-userEmail varchar(30),
-password varchar(20),
-confirmPassword varchar(20)
-);
- */

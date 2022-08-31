@@ -17,19 +17,34 @@ namespace FinanceWebAPI.Controllers
             _context = context;
         }
 
-        //[HttpGet]
-        //public ActionResult<IEnumerable<User>> Get()
-        //{
-        //    var UserList = _context.Users.ToList();
-        //    return Ok(UserList);
-        //}
+        /// <summary>
+        /// This method returns all users' details present in database
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult<IEnumerable<User>> Get()
+        {
+            var UserList = _context.Users.ToList();
+            return Ok(UserList);
+        }
 
-        [HttpGet("{id}")]
+        /// <summary>
+        /// This method returns user details by userId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("{id}")]
+        [HttpGet]
         public ActionResult Get(int id) {
             var user = _context.Users.FirstOrDefault(c => c.userId == id);
             return Ok(user);
         }
 
+        /// <summary>
+        /// This method adds new user details to the database
+        /// </summary>
+        /// <param name="newUser"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Post(User newUser)
         {
@@ -39,6 +54,12 @@ namespace FinanceWebAPI.Controllers
             return CreatedAtAction("Get", new { id = newUser.userId }, newUser);
         }
 
+        /// <summary>
+        /// This method modifies user details by using userId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="modifiedUser"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public ActionResult Put(int id, User modifiedUser)
         {

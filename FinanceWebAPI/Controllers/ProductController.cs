@@ -15,21 +15,26 @@ namespace FinanceWebAPI.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-   
+        public AppDBContext _context { get; }
         public ProductController(AppDBContext context, IWebHostEnvironment environment)
         {
             _context = context;//public property, will be responsible to do crud operations
         }
-        public AppDBContext _context { get; }
+        
 
-
+        /// <summary>
+        /// Returns all products present in database
+        /// </summary>
         [Route("")]
         public ActionResult Get()
         {
             List<Product> data = _context.Products.ToList();               
             return Ok(data);
         }
-
+        /// <summary>
+        /// Returns single product by productId
+        /// </summary>
+        /// <param name="id"></param>
         [Route("All/{id}")]
         public ActionResult Get(int id)
         {

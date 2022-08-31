@@ -19,13 +19,4 @@ namespace FinanceWebAPI.Models
         public DateTime dateOfBirth { get; set; }
     }
 }
-/*
-CREATE TABLE Users(
-userId int primary key identity(1,1),
-name varchar(30) NOT NULL,
-phone varchar(13),
-address varchar(100),
-account_number varchar(16),
-ifsc_code varchar(20),
-is_verified bit
-);*/
+

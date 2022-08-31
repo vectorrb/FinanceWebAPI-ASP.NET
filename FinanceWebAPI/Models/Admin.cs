@@ -14,9 +14,3 @@ namespace FinanceWebAPI.Models
         public string adminPassword { get; set; }
     }
 }
-/*CREATE TABLE Admins(
-adminId int primary key identity(100,1),
-adminName varchar(20),
-adminPassword varchar(20)
-);
-*/

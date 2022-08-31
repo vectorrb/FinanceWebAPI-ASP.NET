@@ -18,10 +18,15 @@ namespace FinanceWebAPI.Controllers
         }
         public AppDBContext _context { get; }
 
+        /// <summary>
+        /// Modifies password in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="newpassword"></param>
+        /// <returns></returns>
         [Route("{id}")]
         public ActionResult Put(int id, string newpassword)
         {
-            newpassword = "pass@userkk";
             LoginDetail data = _context.LoginDetails.FirstOrDefault(p => p.loginId == id);
             if (data == null)
                 return BadRequest();

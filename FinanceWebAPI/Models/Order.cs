@@ -18,14 +18,3 @@ namespace FinanceWebAPI.Models
         public bool isActivated { get; set; }
     }
 }
-/*
- * CREATE TABLE Orders(
-orderId int primary key identity(1,1),
-productId int,
-userId int,
-orderDate DateTime,
-orderAmount decimal,
-emiType int,
-isActivated bit default 0
-);
-*/

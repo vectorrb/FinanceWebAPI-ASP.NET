@@ -17,11 +17,3 @@ namespace FinanceWebAPI.Models
         public string bankname { get; set; }
     }
 }
-/*CREATE TABLE Cards(
-cardId int primary key identity(1,1),
-userId int,
-cardType varchar(13),
-accountBalance decimal,
-expiryDate DateTime
-);
-*/

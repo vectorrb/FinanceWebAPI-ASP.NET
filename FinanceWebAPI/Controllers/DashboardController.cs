@@ -15,6 +15,11 @@ namespace FinanceWebAPI.Controllers
             _context = context;//public property, will be responsible to do crud operations
         }
 
+        /// <summary>
+        /// Returns card details of a user by userId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Route("")]
         [HttpGet]
         public ActionResult Get(int id)
@@ -23,6 +28,11 @@ namespace FinanceWebAPI.Controllers
             return Ok(cardDetail);
         }
 
+        /// <summary>
+        /// Returns recent product purchased by user via EMI using userId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Route("productsPurchasedByUser")]
         public IActionResult productsPurchasedByUser(int id)
         {
@@ -39,30 +49,21 @@ namespace FinanceWebAPI.Controllers
                 .Max(o => o.orderDate);
 
             Order recentOrder = _context.Orders
+                .Where(o=>o.isActivated == true)
                 .FirstOrDefault(o => o.orderDate == recentOrderDate && o.userId == id);
 
             Product recentOrderProduct = _context.Products.FirstOrDefault(p => p.productId == recentOrder.productId);
-
-            //fetch recent transactions
-            //userid => id
-            //orderid => recentOrder.orderId
-
-            //List<Transaction> recent = _context.Transactions
-            //    .OrderByDescending(t => t.transactionDate)
-            //    .Take(5)
-            //    .Where(t => t.userId == id && t.orderId == recentOrder.orderId)
-            //    .ToList();
-
-            //fetch amount paid
-            //productId = recentOrderPRoduct.productId
-            //decimal amountPaid = _context.Transactions
-            //    .Where(t => t.userId == id && t.productId == recentOrderProduct.productId)
-            //    .Sum(t => t.transactionAmount);
 
             return Ok(recentOrderProduct);
 
         }
 
+        /// <summary>
+        /// Returns total amount yet paid by user of product which is recently/last ordered
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="productId"></param>
+        /// <returns></returns>
         [Route("getAmountPaidForProduct/")]
         public IActionResult GetAmountPaid(int userId, int productId)
         {
@@ -73,6 +74,11 @@ namespace FinanceWebAPI.Controllers
             return Ok(amountPaid);
         }
 
+        /// <summary>
+        /// Returns recent(last 5) transactions made by user by userId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Route("getRecentTransactions/")]
         public IActionResult GetRecentTransactions(int id)
         {

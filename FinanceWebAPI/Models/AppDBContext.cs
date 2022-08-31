@@ -24,14 +24,8 @@ namespace FinanceWebAPI.Models
         public DbSet<Order> Orders { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
 
-        //public DbSet<UserLoginViewModel> UsersLogin { get; set; }
-
         //this is dummy table or view for executing stored procedure
         public DbSet<Product> Products { get; set; }
 
-        //partial void OnModelCreatingPartial(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<RegistrationViewModel>().HasNoKey();
-        //}
     }
 }
